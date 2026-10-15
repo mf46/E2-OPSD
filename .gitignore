@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+
+# Data: only the manifest, licenses, README and the bundled validation file are tracked
+/data/*
+!/data/README.md
+!/data/manifest.json
+!/data/licenses/
+!/data/verl/
+/data/verl/*
+!/data/verl/amc23+aime24+aime25+hmmt25/
+/data/verl/amc23+aime24+aime25+hmmt25/*
+!/data/verl/amc23+aime24+aime25+hmmt25/val.parquet
+
+# Training outputs and logs
+outputs/
+checkpoints/
+swanlog/
+wandb/
+*.log
+
+# Local environment and tooling
+.env
+.venv/
+.idea/
+.vscode/
+.DS_Store
+
+# veRL runtime schemas are source code, even though their directory is named data
+!third_party/verl/verl/trainer/config/data/
+!third_party/verl/verl/trainer/config/data/legacy_data.yaml

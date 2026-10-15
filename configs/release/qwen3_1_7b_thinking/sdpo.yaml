@@ -1,0 +1,72 @@
+method: sdpo
+model_path: Qwen/Qwen3-1.7B
+use_lora: false
+seed: 42
+full_determinism: false
+
+learning_rate: 1e-6
+num_epochs: 30
+training_step_unit: optimizer
+total_training_steps: 360
+per_device_batch_size: 32
+group_size: 8
+ppo_mini_batch_size: 32
+max_grad_norm: 0.1
+warmup_steps: 100
+weight_decay: 0.01
+max_train_samples: 60000
+save_steps: 60
+eval_steps: 60
+save_best_only: true
+checkpoint_retention_mode: full
+rollout_is: token
+rollout_is_threshold: 2.0
+
+max_prompt_length: 2048
+max_completion_length: 16384
+val_max_completion_length: 38912
+actor_max_token_len_per_gpu: 40960
+temperature: 1.0
+top_p: 0.95
+top_k_sampling: 20
+student_enable_thinking: true
+val_enable_thinking: true
+val_do_sample: true
+val_n: 8
+val_temperature: 0.6
+val_top_p: 0.95
+val_top_k: 20
+val_batch_size: 16
+eval_compute_entropy: true
+entropy_from_logits_with_chunking: true
+entropy_chunk_size: 512
+teacher_enable_thinking: true
+
+privileged_text_mode: solution_answer
+privileged_solution_source: sibling_success
+sdpo_success_reward_threshold: 0.5
+sdpo_exclude_self_success: true
+sdpo_strip_sibling_thinking: true
+
+vllm_gpu_memory_utilization: 0.4
+vllm_tensor_parallel_size: 1
+n_gpus_per_node: 8
+
+alpha: 0.5
+is_clip: 2.0
+ema_decay: 0.95
+full_logit_distill: true
+distill_add_tail: true
+top_k_distill: 100
+teacher_mode: ema
+
+output_dir: ./outputs/release/qwen3_1_7b_thinking/sdpo
+run_tag: train_360
+data_dir: ./data
+train_dataset: deepmath_filtered_level5_7
+val_dataset: amc23,aime24,aime25,hmmt25
+use_wandb: true
+use_swanlab: false
+project_name: e2opsd
+experiment_name: qwen3_1_7b_thinking_sdpo
+val_before_train: false

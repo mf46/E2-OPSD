@@ -1,0 +1,72 @@
+# Modified by the E2-OPSD authors, 2026; see third_party/verl/MODIFICATIONS.md.
+# Tokenizer to use for the dataset. When null, use the model tokenizer.
+tokenizer: null
+
+# Whether to cache the dataset in shared memory.
+use_shm: false
+
+# Training and validation parquet files.
+train_files: ~/data/rlhf/gsm8k/train.parquet
+val_files: ~/data/rlhf/gsm8k/test.parquet
+
+# Optional sample limits. A negative value keeps every sample.
+train_max_samples: -1
+val_max_samples: -1
+
+# Dataset column names.
+prompt_key: prompt
+reward_fn_key: data_source
+
+# Prompt and response token limits.
+max_prompt_length: 512
+max_response_length: 512
+
+# Global training batch size and validation batch size.
+train_batch_size: 1024
+val_batch_size: null
+
+# Optional multi-turn tool configuration.
+tool_config_path: ${oc.select:actor_rollout_ref.rollout.multi_turn.tool_config_path,null}
+
+# Dataset return modes.
+return_raw_input_ids: false
+return_raw_chat: true
+return_full_prompt: false
+
+# Data loading and ordering.
+shuffle: true
+seed: null
+dataloader_num_workers: 8
+validation_shuffle: false
+
+# Multimodal preprocessing.
+image_patch_size: 14
+image_key: images
+video_key: videos
+return_multi_modal_inputs: true
+
+# Prompt filtering and truncation.
+filter_overlong_prompts: false
+filter_overlong_prompts_workers: 1
+truncation: error
+
+# Whether dataset/model loading may execute remote custom code.
+trust_remote_code: false
+
+# Optional custom dataset implementation.
+custom_cls:
+  path: null
+  name: null
+
+# Optional custom sampler implementation.
+sampler:
+  class_path: null
+  class_name: null
+
+# Optional dynamic data generation implementation.
+datagen:
+  path: null
+  name: null
+
+# Extra keyword arguments passed to the tokenizer chat template.
+apply_chat_template_kwargs: {}

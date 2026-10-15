@@ -1,0 +1,56 @@
+{
+  "format_version": 1,
+  "datasets": [
+    {
+      "dataset": "deepmath_filtered_level5_7",
+      "split": "train",
+      "path": "deepmath_filtered_level5_7/train.parquet",
+      "distribution": "huggingface",
+      "repo_id": "Leyiii/RLCSD",
+      "revision": "33d7de919af5b03257ff92c30303fddf9afdda4a",
+      "url": "https://huggingface.co/datasets/Leyiii/RLCSD/resolve/33d7de919af5b03257ff92c30303fddf9afdda4a/deepmath_filtered_level5_7/train.parquet?download=true",
+      "size_bytes": 1031585556,
+      "rows": 63618,
+      "sha256": "aadeca347b3d65988e24ae28d522675bf13dbd12b95c34c811a7894f5c6140db",
+      "license": "MIT"
+    },
+    {
+      "dataset": "amc23+aime24+aime25+hmmt25",
+      "split": "val",
+      "path": "amc23+aime24+aime25+hmmt25/val.parquet",
+      "distribution": "bundled",
+      "size_bytes": 65998,
+      "rows": 173,
+      "sha256": "e3670d7cd422d9a93d109bf38201ca0d690291ebe773c7363b096cb2ec327862",
+      "benchmark_counts": {
+        "amc23": 83,
+        "aime24": 30,
+        "aime25": 30,
+        "hmmt25": 30
+      },
+      "license": "Per component",
+      "components": {
+        "amc23": {
+          "rows": 83,
+          "source": "Leyiii/RLCSD (from AI-MO/aimo-validation-amc)",
+          "license": "MIT; Apache-2.0"
+        },
+        "aime24": {
+          "rows": 30,
+          "source": "Leyiii/RLCSD (from math-ai/aime24)",
+          "license": "MIT; Apache-2.0"
+        },
+        "aime25": {
+          "rows": 30,
+          "source": "Leyiii/RLCSD",
+          "license": "MIT"
+        },
+        "hmmt25": {
+          "rows": 30,
+          "source": "MathArena/hmmt_feb_2025@6fdc4277120810ff75aa22d2d5489b91f7a262a1",
+          "license": "CC-BY-NC-SA-4.0"
+        }
+      }
+    }
+  ]
+}
